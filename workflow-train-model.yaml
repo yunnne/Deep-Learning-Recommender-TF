@@ -1,25 +1,9 @@
-# Recommender Workflow 1 of 2: Train model
-#
-# Part of the project "Gradient End-to-End: A Recommender System using Notebooks and Workflows"
-# at https://docs.paperspace.com/gradient/get-started/tutorials-list/end-to-end-example
-# See that URL for instructions on how to use
-# This file is called from the Gradient Notebook deep_learning_recommender_tf.ipynb
-# In turn, this file calls workflow_train_model.py
-# A trained model is output, which is then deployed in the following section of the Notebook
-# The project GitHub repository, which includes this file, is at https://github.com/gradient-ai/Deep-Learning-Recommender-TF
-#
-# Dataset ID
-#
-# The user needs to create their own Gradient managed dataset for job outputs, using the same name as here: "recommender"
-# See the project Notebook for details on how to do this
-#
-# Last updated: Nov 03rd 2021
 
 defaults:
   resources:
     instance-type: C4 # C5, P4000, etc., will also work
   env:
-    PAPERSPACE_API_KEY: secret:api_key_recommender
+    PAPERSPACE_API_KEY: secret:my-key
 
 jobs:
 
@@ -35,7 +19,7 @@ jobs:
         type: volume
     uses: git-checkout@v1
     with:
-      url: https://github.com/gradient-ai/Deep-Learning-Recommender-TF
+      url: https://github.com/yunnne/Deep-Learning-Recommender-TF/
 
   # 2. Train model
 
@@ -62,4 +46,4 @@ jobs:
         cp -R /inputs/repoRec /Deep-Learning-Recommender-TF
         cd /Deep-Learning-Recommender-TF
         python workflow_train_model.py
-      image: tensorflow/tensorflow:2.4.1-jupyter
+      image: tensorflow/tensorflow:3.9.1-jupyter
