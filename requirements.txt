@@ -1,0 +1,3 @@
+pip install tensorflow==2.9.2
+pip install tensorflow-datasets==4.9.3
+pip install tensorflow-recommenders==0.7.0
