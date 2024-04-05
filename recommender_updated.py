@@ -16,7 +16,7 @@ import subprocess
 
 subprocess.run('pip install --upgrade pip', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
 subprocess.run('pip install -q tensorflow-recommenders==0.7.0', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
-subprocess.run('pip install -q tensorflow==2.9.2', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+#subprocess.run('pip install -q tensorflow==2.9.2', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
 subprocess.run('pip install -q --upgrade tensorflow-datasets==4.9.3', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
 
 import os
