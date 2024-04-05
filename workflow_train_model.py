@@ -15,8 +15,9 @@
 import subprocess
 
 subprocess.run('pip install --upgrade pip', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
-subprocess.run('pip install -q tensorflow-recommenders==0.4.0', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
-subprocess.run('pip install -q --upgrade tensorflow-datasets==4.2.0', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+subprocess.run('pip install -q tensorflow-recommenders==0.7.0', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+subprocess.run('pip install -q tensorflow==2.9.2', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+subprocess.run('pip install -q --upgrade tensorflow-datasets==4.9.3', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
 
 import os
 import platform
@@ -33,8 +34,13 @@ import tensorflow_recommenders as tfrs
 
 # Get model hyperparameters
 
-hp_final_epochs = int(os.environ.get('HP_FINAL_EPOCHS'))
-hp_final_lr = float(os.environ.get('HP_FINAL_LR'))
+
+default_final_epochs = 100
+default_final_lr = 0.01
+
+hp_final_epochs = int(os.environ.get('HP_FINAL_EPOCHS', default_final_epochs))
+hp_final_lr = float(os.environ.get('HP_FINAL_LR', default_final_lr))
+
 
 # Data preparation
 
@@ -172,9 +178,9 @@ model_tr.predict(cached_test)
 
 # Save model
 
-export_path = '/outputs/trainedRecommender'
+export_path = '/notebooks'
 print('export_path = {}\n'.format(export_path))
 
-model_tr.save(export_path)
+tf.saved_model.save(model_tr, export_path)
 
 print('Done')
