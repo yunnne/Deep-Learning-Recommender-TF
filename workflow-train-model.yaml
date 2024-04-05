@@ -45,4 +45,5 @@ jobs:
       script: |-
         cp -R /inputs/repoRec /Deep-Learning-Recommender-TF
         cd /Deep-Learning-Recommender-TF
-        python workflow_train_model.py
+        python recommender_updated.py
+      image: tensorflow/tensorflow:3.9.2-jupyter  
