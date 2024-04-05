@@ -106,13 +106,13 @@ class MovielensModelTunedRanking(tfrs.models.Model):
         embedding_dimension = 32
 
         self.movie_model: tf.keras.layers.Layer = tf.keras.Sequential([
-            tf.keras.layers.experimental.preprocessing.StringLookup(
+            tf.keras.layers.StringLookup(
                 vocabulary=unique_movie_titles, mask_token=None),
             tf.keras.layers.Embedding(len(unique_movie_titles) + 1, embedding_dimension)
         ])
 
         self.user_model: tf.keras.layers.Layer = tf.keras.Sequential([
-            tf.keras.layers.experimental.preprocessing.StringLookup(
+            tf.keras.layers.StringLookup(
                 vocabulary=unique_user_ids, mask_token=None),
             tf.keras.layers.Embedding(len(unique_user_ids) + 1, embedding_dimension)
         ])
