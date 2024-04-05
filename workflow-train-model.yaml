@@ -46,4 +46,3 @@ jobs:
         cp -R /inputs/repoRec /Deep-Learning-Recommender-TF
         cd /Deep-Learning-Recommender-TF
         python workflow_train_model.py
-      image: tensorflow/tensorflow:3.9.1-jupyter
